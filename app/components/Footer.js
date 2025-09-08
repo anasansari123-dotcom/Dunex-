@@ -1,15 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-16">
+    <footer className="bg-[#081A4C] text-[#d4af37] py-16 border-t-white border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex items-center">
-                <div className="w-8 h-8 bg-teal-600 rounded-l-lg"></div>
-                <div className="w-4 h-4 bg-green-500 rounded-r-lg"></div>
-              </div>
-              <h3 className="text-xl font-bold">DUNEX REAL ESTATE</h3>
+              <h3 className="text-xl font-bold">DUNEX CONSTRUCTOR</h3>
             </div>
             <p className="text-gray-400">
               Your trusted partner in Dubai's real estate market, offering premium properties and expert investment guidance.
@@ -29,7 +25,6 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Property Sales</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Property Rentals</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Investment Advisory</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Property Management</a></li>
@@ -46,8 +41,8 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 DUNEX Real Estate. All rights reserved.</p>
+        <div className="border-t border-yellow-500 mt-12 pt-8 text-center text-gray-400">
+          <p>&copy; 2025 DevSphere Solution Estate. All rights reserved.</p>
         </div>
       </div>
     </footer>

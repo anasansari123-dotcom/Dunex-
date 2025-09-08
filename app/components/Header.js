@@ -12,16 +12,9 @@ export default function Header() {
           </Link>
           <nav>
             <ul className="flex items-center gap-6 text-sm">
-              <li><Link href="/" className="hover:text-teal-600">Home</Link></li>
-              <li><Link href="/map" className="hover:text-teal-600">Map</Link></li>
-              <li><Link href="/blog" className="hover:text-teal-600">Blog</Link></li>
-              <li><Link href="/faq" className="hover:text-teal-600">FAQ</Link></li>
-              <li><Link href="/contact" className="hover:text-teal-600">Contact</Link></li>
-              <li><Link href="/privacy" className="hover:text-teal-600">Privacy</Link></li>
-              <li><Link href="/terms" className="hover:text-teal-600">Terms</Link></li>
-              <li><Link href="/auth/login" className="hover:text-teal-600">Login</Link></li>
-              <li><Link href="/auth/signup" className="hover:text-teal-600">Sign Up</Link></li>
-              <li><Link href="/payment" className="hover:text-teal-600">Payment</Link></li>
+              <button className="inline-flex items-center gap-3 mt-3 px-6 py-3 rounded-full bg-[#D4AF37] text-[#071538] font-semibold shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition">
+                Invesment Now
+              </button>
             </ul>
           </nav>
         </div>
