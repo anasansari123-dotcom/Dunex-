@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function DashboardPage() {
   const [properties, setProperties] = useState([
@@ -10,136 +11,111 @@ export default function DashboardPage() {
       location: "Downtown Dubai",
       totalPrice: 2000000,
       invested: 500000,
-      image: "/images/burj-khalifa.jpg", // Add image path
+      image: "/burj.jpg",
     },
     {
       id: 2,
       name: "Palm Jumeirah Villa",
       location: "Palm Jumeirah",
       totalPrice: 3500000,
-      invested: 1200000,
-      image: "/images/palm-jumeirah.jpg",
+      invested: 1000000,
+      image: "/palm.jpg",
     },
     {
       id: 3,
       name: "Dubai Marina Penthouse",
       location: "Dubai Marina",
-      totalPrice: 5000000,
-      invested: 2000000,
-      image: "/images/dubai-marina.jpg",
+      totalPrice: 1500000,
+      invested: 250000,
+      image: "/marina.jpg",
     },
   ]);
 
-  const [selectedProperty, setSelectedProperty] = useState(null);
-  const [investmentAmount, setInvestmentAmount] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [currentProperty, setCurrentProperty] = useState(null);
 
-  const handleInvestClick = (property) => {
-    setSelectedProperty(property);
-    setInvestmentAmount("");
-  };
-
-  const handleConfirmInvestment = () => {
-    if (!investmentAmount || investmentAmount <= 0) return;
-
+  const handleInvest = (id) => {
     setProperties((prev) =>
-      prev.map((prop) =>
-        prop.id === selectedProperty.id
-          ? { ...prop, invested: prop.invested + Number(investmentAmount) }
-          : prop
+      prev.map((property) =>
+        property.id === id
+          ? { ...property, invested: property.invested + 50000 }
+          : property
       )
     );
+    const investedProp = properties.find((p) => p.id === id);
+    setCurrentProperty(investedProp.name);
+    setShowModal(true);
 
-    setSelectedProperty(null);
+    setTimeout(() => setShowModal(false), 2000); // modal 2 sec baad hide hoga
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
-      <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">
-        Investment Dashboard
-      </h1>
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1D39] via-[#0F2349] to-[#13294B] text-[#D4AF37] p-8">
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-4xl font-extrabold text-center mb-12 tracking-wide"
+      >
+        🏢 Dunex Investment Dashboard
+      </motion.h1>
 
-      {/* Property Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {properties.map((property) => {
-          const progress = (property.invested / property.totalPrice) * 100;
+      <div className="grid md:grid-cols-3 gap-10">
+        {properties.map((property, index) => (
+          <motion.div
+            key={property.id}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            className="bg-white/5 backdrop-blur-xl rounded-2xl shadow-xl border border-[#D4AF37]/40 overflow-hidden"
+          >
+            <img
+              src={property.image}
+              alt={property.name}
+              className="h-48 w-full object-cover"
+            />
+            <div className="p-6">
+              <h2 className="text-2xl font-bold">{property.name}</h2>
+              <p className="text-sm opacity-80">{property.location}</p>
 
-          return (
-            <div
-              key={property.id}
-              className="bg-white rounded-2xl shadow-lg p-6 border border-gray-200"
-            >
-              {/* Property Image */}
-              <img
-                src={property.image}
-                alt={property.name}
-                className="w-full h-48 object-cover rounded-2xl mb-4"
-              />
-
-              <h2 className="text-xl font-semibold text-gray-900">
-                {property.name}
-              </h2>
-              <p className="text-gray-600 text-sm">{property.location}</p>
-
-              <div className="mt-4">
-                <div className="flex justify-between text-sm text-gray-700">
-                  <span>Invested: ₹{property.invested.toLocaleString()}</span>
-                  <span>Total: ₹{property.totalPrice.toLocaleString()}</span>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-3 mt-2">
-                  <div
-                    className="bg-teal-600 h-3 rounded-full"
-                    style={{ width: `${progress}%` }}
-                  ></div>
-                </div>
+              <div className="mt-4 space-y-2">
+                <p className="text-lg">
+                  💰 Total Price:{" "}
+                  <span className="font-semibold">
+                    ₹{property.totalPrice.toLocaleString()}
+                  </span>
+                </p>
+                <p className="text-lg">
+                  📊 Invested:{" "}
+                  <span className="font-semibold">
+                    ₹{property.invested.toLocaleString()}
+                  </span>
+                </p>
               </div>
 
-              <button
-                onClick={() => handleInvestClick(property)}
-                className="mt-6 w-full bg-gradient-to-r from-[#FFD700] to-[#F59E0B] text-white py-2 px-4 rounded-lg font-medium hover:scale-105 transition"
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={() => handleInvest(property.id)}
+                className="mt-6 w-full bg-[#D4AF37] text-[#0B1D39] font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-yellow-500 transition"
               >
-                Invest
-              </button>
+                Invest ₹50,000
+              </motion.button>
             </div>
-          );
-        })}
+          </motion.div>
+        ))}
       </div>
 
-      {/* Investment Modal */}
-      {selectedProperty && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Invest in {selectedProperty.name}
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Total Price: ₹{selectedProperty.totalPrice.toLocaleString()} <br />
-              Already Invested: ₹{selectedProperty.invested.toLocaleString()}
-            </p>
-
-            <input
-              type="number"
-              value={investmentAmount}
-              onChange={(e) => setInvestmentAmount(e.target.value)}
-              placeholder="Enter amount to invest"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FFD700] mb-6"
-            />
-
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={() => setSelectedProperty(null)}
-                className="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleConfirmInvestment}
-                className="px-6 py-2 bg-gradient-to-r from-[#FFD700] to-[#F59E0B] text-white rounded-lg font-medium hover:scale-105 transition"
-              >
-                Confirm Investment
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* Success Modal */}
+      {showModal && (
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          className="fixed bottom-10 right-10 bg-[#D4AF37] text-[#0B1D39] px-6 py-4 rounded-xl shadow-xl font-bold"
+        >
+          ✅ Successfully invested in {currentProperty}
+        </motion.div>
       )}
     </div>
   );

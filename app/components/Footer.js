@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#081A4C] text-[#d4af37] py-16 border-t-white border-t">
+    <footer className="bg-[var(--secondary)] text-[var(--primary)] py-16 border-t-white border-t animate-fade-in">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-yellow-500 mt-12 pt-8 text-center text-gray-400">
+        <div className="border-t border-[var(--primary)] mt-12 pt-8 text-center text-gray-400">
           <p>&copy; 2025 DevSphere Solution Estate. All rights reserved.</p>
         </div>
       </div>

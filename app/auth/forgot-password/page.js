@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -14,47 +15,67 @@ export default function ForgotPasswordPage() {
       setError("Please enter your email address");
       return;
     }
-    
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError("Please enter a valid email address");
       return;
     }
-
-    // Handle password reset logic here
     console.log("Password reset requested for:", email);
     setIsSubmitted(true);
     setError("");
   };
 
   const handleGoogleLogin = () => {
-    // Handle Google authentication here
     console.log("Google login clicked");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-white to-green-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full">
-        {/* Logo and Back to Home */}
-        <div className="text-center mb-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0B1D39] via-[#13294B] to-[#0F2349] flex items-center justify-center p-4 text-[#D4AF37]">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-md w-full"
+      >
+        {/* Logo + Title */}
+        <div className="text-center mb-10">
           <Link href="/" className="inline-block mb-6">
-            <div className="w-16 h-16 bg-teal-600 rounded-full mx-auto flex items-center justify-center">
-              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-20 h-20 bg-[#D4AF37] rounded-full mx-auto flex items-center justify-center shadow-lg"
+            >
+              <svg
+                className="w-10 h-10 text-[#0B1D39]"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
                 <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
               </svg>
-            </div>
+            </motion.div>
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Reset Password</h1>
-          <p className="text-gray-600">Enter your email to receive reset instructions</p>
+          <h1 className="text-3xl font-extrabold mb-2">Reset Password</h1>
+          <p className="text-[#D4AF37]/80">
+            Enter your email to receive reset instructions
+          </p>
         </div>
 
-        {/* Forgot Password Form */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
+        {/* Card */}
+        <motion.div
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="bg-[#0F2349]/70 backdrop-blur-xl rounded-2xl shadow-xl p-8 border border-[#D4AF37]/40"
+        >
           {!isSubmitted ? (
             <>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium mb-2"
+                  >
                     Email Address
                   </label>
                   <input
@@ -64,41 +85,38 @@ export default function ForgotPasswordPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-colors ${
-                      error ? 'border-red-500' : 'border-gray-300'
+                    className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent bg-[#13294B] text-white placeholder-gray-400 transition ${
+                      error ? "border-red-500" : "border-[#D4AF37]/40 border"
                     }`}
                     placeholder="Enter your email address"
                   />
-                  {error && (
-                    <p className="mt-1 text-sm text-red-600">{error}</p>
-                  )}
+                  {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
                 </div>
 
                 {/* Submit Button */}
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full bg-teal-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-teal-700 transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+                  className="w-full bg-[#D4AF37] text-[#0B1D39] py-3 px-4 rounded-lg font-semibold hover:bg-yellow-500 transition"
                 >
                   Send Reset Link
-                </button>
+                </motion.button>
               </form>
 
               {/* Divider */}
-              <div className="my-6">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">Or continue with</span>
-                  </div>
-                </div>
+              <div className="my-6 relative flex items-center">
+                <div className="flex-grow border-t border-[#D4AF37]/30" />
+                <span className="mx-2 text-sm text-[#D4AF37]/70">
+                  Or continue with
+                </span>
+                <div className="flex-grow border-t border-[#D4AF37]/30" />
               </div>
 
               {/* Google Login Button */}
-              <button
+              <motion.button
+                whileTap={{ scale: 0.95 }}
                 onClick={handleGoogleLogin}
-                className="w-full bg-white border border-gray-300 text-gray-700 py-3 px-4 rounded-lg font-medium hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 flex items-center justify-center gap-3"
+                className="w-full bg-white text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-100 transition flex items-center justify-center gap-3 shadow-md"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
@@ -119,68 +137,90 @@ export default function ForgotPasswordPage() {
                   />
                 </svg>
                 Continue with Google
-              </button>
+              </motion.button>
             </>
           ) : (
             /* Success Message */
-            <div className="text-center py-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-8"
+            >
               <div className="w-16 h-16 bg-green-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Check Your Email</h3>
-              <p className="text-gray-600 mb-6">
-                We've sent a password reset link to <span className="font-medium text-gray-900">{email}</span>
-              </p>
-              <p className="text-sm text-gray-500 mb-6">
-                If you don't see the email, check your spam folder or try again.
+              <h3 className="text-xl font-semibold mb-2">Check Your Email</h3>
+              <p className="text-[#D4AF37]/80 mb-6">
+                We've sent a password reset link to{" "}
+                <span className="font-medium text-[#D4AF37]">{email}</span>
               </p>
               <button
                 onClick={() => setIsSubmitted(false)}
-                className="w-full bg-teal-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-teal-700 transition-colors"
+                className="w-full bg-[#D4AF37] text-[#0B1D39] py-3 px-4 rounded-lg font-semibold hover:bg-yellow-500 transition"
               >
                 Send Another Email
               </button>
-            </div>
+            </motion.div>
           )}
 
           {/* Navigation Links */}
           <div className="mt-8 text-center space-y-3">
-            <p className="text-gray-600">
+            <p>
               Remember your password?{" "}
               <Link
                 href="/auth/login"
-                className="text-teal-600 hover:text-teal-700 font-medium"
+                className="text-[#D4AF37] hover:underline font-medium"
               >
                 Sign in
               </Link>
             </p>
-            <p className="text-gray-600">
-              Don't have an account?{" "}
+            <p>
+              Don’t have an account?{" "}
               <Link
                 href="/auth/signup"
-                className="text-teal-600 hover:text-teal-700 font-medium"
+                className="text-[#D4AF37] hover:underline font-medium"
               >
                 Sign up
               </Link>
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Back to Home Link */}
+        {/* Back to Home */}
         <div className="text-center mt-6">
           <Link
             href="/"
-            className="text-gray-500 hover:text-gray-700 text-sm flex items-center justify-center gap-2"
+            className="text-[#D4AF37]/70 hover:text-[#D4AF37] text-sm flex items-center justify-center gap-2"
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
             </svg>
             Back to Home
           </Link>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
