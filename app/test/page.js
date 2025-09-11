@@ -1,7 +1,7 @@
 "use client"; // makes this page run on the client
 
 import { useEffect, useState } from "react";
-import { supabase } from "../../lib/supabaseClient";
+import { getSupabaseClient } from "../../lib/supabaseClient";
 
 export default function TestPage() {
   const [data, setData] = useState(null);
@@ -9,11 +9,14 @@ export default function TestPage() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const { data, error } = await supabase.from("users").select("*");
-      setData(data);
-      setError(error);
-      console.log("Supabase Data:", data);
-      console.log("Supabase Error:", error);
+      const client = getSupabaseClient();
+      if (!client) {
+        setError({ message: "Supabase client unavailable" });
+        return;
+      }
+      const { data, error } = await client.from("users").select("*");
+      setData(data || null);
+      setError(error || null);
     }
     fetchUsers();
   }, []);
