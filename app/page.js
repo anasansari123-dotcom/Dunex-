@@ -35,23 +35,27 @@ export default function Home() {
   const faqs = [
     {
       question: "How much ROI do I get?",
-      answer: "You earn 10–15% per month."
+      answer: "You earn 10–15% monthly ROI, credited every month."
     },
     {
-      question: "Minimum investment?",
-      answer: "Start from ₹1,00,000."
+      question: "Minimum investment amount?",
+      answer: "You can start with just ₹1,00,000."
     },
     {
       question: "How will I receive ROI?",
-      answer: "Credited directly to your bank account in INR every month."
+      answer: "ROI is credited directly to your bank account in INR."
     },
     {
       question: "How do I track my investment?",
-      answer: "You get an Investment ID with dashboard access, where you can check your ROI and profits anytime."
+      answer: "You’ll receive a unique Investment ID & dashboard login to track ROI in real time."
     },
     {
-      question: "Is it safe?",
-      answer: "Yes, all projects are verified and legally backed by Dubai's trusted developers."
+      question: "Are projects verified?",
+      answer: "Yes. All projects are Dubai RERA & DLD approved."
+    },
+    {
+      question: "Is this safe?",
+      answer: "Absolutely. Dunex ensures legal agreements, investor contracts, and developer verification for every project."
     }
   ];
 
@@ -134,81 +138,75 @@ export default function Home() {
         <div className="relative z-10 min-h-screen flex items-center py-16 sm:py-20">
           <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 animate-[slide-up_1s_ease-out_0.5s_both]" data-reveal>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight drop-shadow-lg mb-4 sm:mb-6">
-              TURNING REAL ESTATE INTO REAL RETURNS
+              Invest in Dubai. Earn 10–15% ROI Every Month with Dunex.
             </h1>
             <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200/90 max-w-4xl mx-auto mb-6 sm:mb-8 px-2">
-              Dunex brings you Dubai's premium real estate opportunities. Start investing today from ₹1,00,000 and earn 10–15% ROI per month, credited directly to your account — simple, secure, and profitable.
+              Dunex gives Indian investors direct access to Dubai’s premium real estate opportunities — trusted, secure, and profitable. With as little as ₹1,00,000, you can start earning 10–15% ROI per month, credited directly to your bank account in INR.
+            </p>
+            <p className="text-sm sm:text-base md:text-lg text-gray-200/90 max-w-3xl mx-auto mb-6 sm:mb-10 px-2">
+              We eliminate the risks of middlemen by offering verified projects, legal compliance, instant dashboards, and real-time profit tracking.
             </p>
             
             {/* Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8 max-w-6xl mx-auto">
               <div className="card-base hover-lift hover-glow hover-3d bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 animate-float" data-reveal style={{transitionDelay: '60ms'}}>
                 <div className="text-xl sm:text-2xl mb-2">🚀</div>
-                <div className="text-xs sm:text-sm font-semibold">10–15% Monthly ROI</div>
+                <div className="text-xs sm:text-sm font-semibold">10–15% Monthly ROI – Earn consistently, every month</div>
               </div>
               <div className="card-base hover-lift hover-glow hover-3d bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 animate-float" data-reveal style={{transitionDelay: '120ms'}}>
                 <div className="text-xl sm:text-2xl mb-2">✅</div>
-                <div className="text-xs sm:text-sm font-semibold">Start from ₹1,00,000</div>
+                <div className="text-xs sm:text-sm font-semibold">Start from just ₹1,00,000 – Affordable global investment entry</div>
               </div>
               <div className="card-base hover-lift hover-glow hover-3d bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 animate-float" data-reveal style={{transitionDelay: '180ms'}}>
                 <div className="text-xl sm:text-2xl mb-2">🔒</div>
-                <div className="text-xs sm:text-sm font-semibold">100% Secure & Transparent</div>
+                <div className="text-xs sm:text-sm font-semibold">100% Secure & Transparent – Projects vetted, documents verified</div>
               </div>
               <div className="card-base hover-lift hover-glow hover-3d bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 animate-float" data-reveal style={{transitionDelay: '240ms'}}>
                 <div className="text-xl sm:text-2xl mb-2">🆔</div>
-                <div className="text-xs sm:text-sm font-semibold">Instant Investment ID & Real-Time Profit Tracking</div>
+                <div className="text-xs sm:text-sm font-semibold">Instant Investment ID – Track ROI & profits in real time</div>
+              </div>
+              <div className="card-base hover-lift hover-glow hover-3d bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20 animate-float" data-reveal style={{transitionDelay: '300ms'}}>
+                <div className="text-xl sm:text-2xl mb-2">📄</div>
+                <div className="text-xs sm:text-sm font-semibold">Legal Agreements – Every investment backed by proper contracts</div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-4" data-reveal>
-              <button className="btn-3d inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[#D4AF37] text-[#071538] font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-110 hover:brightness-95 w-full sm:w-auto">
+              <a href="/dashboard" className="btn-3d inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[#D4AF37] text-[#071538] font-bold text-base sm:text-lg shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-110 hover:brightness-95 w-full sm:w-auto">
                 Start Investing
-              </button>
-              <button className="btn-3d inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#D4AF37] text-[#D4AF37] font-bold text-base sm:text-lg hover:bg-[#D4AF37] hover:text-[#071538] transition-all duration-300 hover:scale-110 w-full sm:w-auto">
+              </a>
+              <a href="/contact" className="btn-3d inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#D4AF37] text-[#D4AF37] font-bold text-base sm:text-lg hover:bg-[#D4AF37] hover:text-[#071538] transition-all duration-300 hover:scale-110 w-full sm:w-auto">
                 Talk to Our Experts
-              </button>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Featured verification note */}
+      <div className="px-6">
+        <p className="text-center text-gray-300 mt-2" data-reveal style={{transitionDelay: '80ms'}}>
+          💡 All opportunities are verified, RERA-registered, and backed by Dubai’s top developers.
+        </p>
+      </div>
+
       {/* 2. WHY DUBAI REAL ESTATE */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16" data-reveal style={{transitionDelay: '60ms'}}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Dubai Real Estate?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Dubai Real Estate? (The Global Advantage)</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Dubai is one of the world's most profitable investment hubs
+              Dubai is one of the world’s most profitable and safest property markets.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                icon: "📈",
-                title: "High ROI Potential",
-                description: "10–15% per month"
-              },
-              {
-                icon: "💰",
-                title: "Tax-Free Investment Benefits",
-                description: "No income tax on profits"
-              },
-              {
-                icon: "🌍",
-                title: "Fast-Growing Market",
-                description: "Global business & investment hub"
-              },
-              {
-                icon: "🛡️",
-                title: "Safe & Transparent",
-                description: "Investor-friendly regulations"
-              },
-              {
-                icon: "🏆",
-                title: "Prestige & Growth",
-                description: "International city with strong property appreciation"
-              }
+              { icon: "📈", title: "High ROI Potential", description: "Rental yields in Dubai are among the highest in the world, delivering 10–15% monthly returns." },
+              { icon: "🏦", title: "Tax-Free Benefits", description: "Investors enjoy zero income tax on rental or profit income." },
+              { icon: "🌍", title: "Fast-Growing Market", description: "Dubai is a global business hub, attracting investors from over 200 countries." },
+              { icon: "🛡", title: "Secure & Transparent", description: "All investments are regulated by the Dubai Land Department (DLD)." },
+              { icon: "🏙", title: "Prestige & Growth", description: "Strong property appreciation with consistent value growth year after year." }
             ].map((item, index) => (
               <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 transition-all duration-300" data-reveal style={{transitionDelay: `${80 * (index + 1)}ms`}}>
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -217,6 +215,9 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <p className="text-center text-gray-300 mt-8" data-reveal style={{transitionDelay: '90ms'}}>
+            💡 Did you know? Dubai property investments delivered an average 17% price appreciation in the past 2 years — making it one of the most rewarding global markets.
+          </p>
         </div>
       </section>
 
@@ -235,18 +236,19 @@ export default function Home() {
   {/* Content */}
   <div className="relative max-w-6xl mx-auto z-10">
     <div className="text-center mb-16" data-reveal style={{transitionDelay: '60ms'}}>
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Choose Dunex?</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Why Choose Dunex? (Your Trusted Investment Partner)</h2>
     </div>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {[
-        { icon: "📅", title: "Monthly ROI", desc: "10–15% every month" },
-        { icon: "🏗", title: "Verified Projects", desc: "Only premium Dubai properties" },
-        { icon: "🔒", title: "Safe & Transparent", desc: "Full legal compliance" },
-        { icon: "💰", title: "Low Entry Barrier", desc: "Start from just ₹1,00,000" },
-        { icon: "🌍", title: "Global Access", desc: "Invest from anywhere in India" },
-        { icon: "🤝", title: "Expert Support", desc: "24/7 guidance for investors" },
-        { icon: "🆔", title: "Instant Investment ID", desc: "Track your profits anytime through your dashboard" }
+        { icon: "📅", title: "Monthly ROI (10–15%)", desc: "Returns are credited every month in INR." },
+        { icon: "🏗", title: "Verified Projects Only", desc: "We partner with Dubai’s top developers (Emaar, DAMAC, Nakheel, etc.)." },
+        { icon: "🔒", title: "Safe & Transparent", desc: "100% legal compliance, investor agreements, and DLD-verified projects." },
+        { icon: "💰", title: "Low Entry Barrier", desc: "Start from just ₹1,00,000." },
+        { icon: "🌍", title: "Global Access", desc: "Invest online securely from anywhere in India." },
+        { icon: "🤝", title: "Expert Guidance", desc: "24/7 support via phone, WhatsApp, and email." },
+        { icon: "🆔", title: "Instant Investment ID", desc: "Get real-time dashboards to track profits anytime." },
+        { icon: "📄", title: "Full Documentation", desc: "Receive legal contracts, receipts, and project details for complete peace of mind." }
       ].map((item, index) => (
         <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 transition-all duration-300" data-reveal style={{transitionDelay: `${80 * (index + 1)}ms`}}>
           <div className="text-3xl mb-4">{item.icon}</div>
@@ -268,10 +270,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-4 gap-8">
             {[
-              { step: "1️⃣", title: "Browse Projects", desc: "Explore handpicked high-growth Dubai properties" },
-              { step: "2️⃣", title: "Invest Securely", desc: "Complete your investment online" },
-              { step: "3️⃣", title: "Get Investment ID", desc: "Instantly receive your unique ID with dashboard access" },
-              { step: "4️⃣", title: "Earn Monthly ROI", desc: "10–15% credited to your account every month, monitor profits anytime" }
+              { step: "1️⃣", title: "Browse Projects", desc: "Explore premium Dubai properties handpicked by experts." },
+              { step: "2️⃣", title: "Invest Securely", desc: "Complete your investment online with legal contracts." },
+              { step: "3️⃣", title: "Get Investment ID", desc: "Instantly receive your digital ID with dashboard access." },
+              { step: "4️⃣", title: "Earn Monthly ROI", desc: "10–15% ROI credited directly to your bank account, with real-time tracking." }
             ].map((item, index) => (
               <div key={index} className="text-center card-base" data-reveal style={{transitionDelay: `${90 * (index + 1)}ms`}}>
                 <div className="bg-[#D4AF37] text-[#071538] w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
@@ -284,9 +286,9 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12" data-reveal style={{transitionDelay: '100ms'}}>
-            <button className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#D4AF37] text-[#071538] font-bold text-lg shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-110">
+            <a href="/dashboard" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#D4AF37] text-[#071538] font-bold text-lg shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-110">
               Start Earning ROI Today
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -306,17 +308,17 @@ export default function Home() {
   {/* Content */}
   <div className="relative max-w-6xl mx-auto z-10 text-white">
     <div className="text-center mb-16" data-reveal style={{transitionDelay: '60ms'}}>
-      <h2 className="text-4xl md:text-5xl font-bold mb-6">Dunex ROI Advantage</h2>
-      <p className="text-xl text-gray-300">With Dunex, your investment gives:</p>
+      <h2 className="text-4xl md:text-5xl font-bold mb-6">The Dunex ROI Advantage</h2>
+      <p className="text-xl text-gray-300">When you invest with Dunex, you get more than returns — you get security, trust, and growth.</p>
     </div>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16">
       {[
-        { icon: "📅", title: "10–15% ROI Every Month" },
-        { icon: "📈", title: "Capital Appreciation – Value growth over time" },
-        { icon: "🔒", title: "Safe & Verified Projects" },
-        { icon: "🌍", title: "Global Access – Invest anytime, anywhere" },
-        { icon: "🆔", title: "Real-Time Tracking – Monitor profits 24/7 with your dashboard" }
+        { icon: "📅", title: "10–15% ROI Monthly – Consistent high returns." },
+        { icon: "📈", title: "Capital Appreciation – Property value increases with time." },
+        { icon: "🔒", title: "Safe & Verified – Every project is legally compliant & DLD-approved." },
+        { icon: "🌍", title: "Global Access – Monitor investments from anywhere." },
+        { icon: "🆔", title: "24/7 Dashboard Access – Track ROI and withdrawals in real time." }
       ].map((item, index) => (
         <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center" data-reveal style={{transitionDelay: `${80 * (index + 1)}ms`}}>
           <div className="text-3xl mb-3">{item.icon}</div>
@@ -342,7 +344,7 @@ export default function Home() {
         ))}
       </div>
       <p className="text-center text-gray-400 text-sm mt-6">
-        (Actual ROI may vary depending on project performance.)
+        ⚠ Note: ROI depends on project performance, but historical results have been consistently within this range.
       </p>
     </div>
   </div>
@@ -353,7 +355,7 @@ export default function Home() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16" data-reveal style={{transitionDelay: '60ms'}}>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Featured Opportunities</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Featured Investment Opportunities</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -394,9 +396,9 @@ export default function Home() {
                     <span className="text-[#D4AF37] font-bold">{item.roi}</span>
                   </div>
                 </div>
-                <button className="w-full bg-[#D4AF37] text-[#071538] font-bold py-3 rounded-lg hover:bg-[#D4AF37]/90 transition-all duration-300">
+                <a href="/dashboard" className="w-full block text-center bg-[#D4AF37] text-[#071538] font-bold py-3 rounded-lg hover:bg-[#D4AF37]/90 transition-all duration-300">
                   Invest Now
-                </button>
+                </a>
               </div>
             ))}
           </div>
@@ -419,13 +421,15 @@ export default function Home() {
   <div className="relative max-w-4xl mx-auto text-center text-white z-10" data-reveal style={{transitionDelay: '60ms'}}>
     <h2 className="text-4xl md:text-5xl font-bold mb-8">About Dunex</h2>
     <p className="text-xl text-gray-300 mb-6">
-      Dunex makes Dubai real estate investment accessible for Indian investors.
+      Dunex was founded with a vision to make global real estate investing accessible to Indians.
     </p>
-    <p className="text-lg text-gray-300 mb-8">
-      Invest from ₹1,00,000 and earn 10–15% ROI per month, directly in INR, while your investment grows in value.
-    </p>
-    <p className="text-lg text-gray-300">
-      With security, transparency, verified projects, and real-time profit tracking, Dunex is your trusted partner for global real estate investments.
+    <p className="text-lg text-gray-300 mb-3">💰 Minimum entry of just ₹1,00,000</p>
+    <p className="text-lg text-gray-300 mb-3">📊 Consistent 10–15% monthly ROI paid directly in INR</p>
+    <p className="text-lg text-gray-300 mb-3">🏗 Investments in Dubai’s fastest-growing premium projects</p>
+    <p className="text-lg text-gray-300 mb-3">🔒 Fully secure, legal, and transparent process</p>
+    <p className="text-lg text-gray-300">📄 Every investor gets legal agreements, receipts, and dashboard access</p>
+    <p className="text-lg text-gray-300 mt-6">
+      We are not just an investment platform — we are your trusted partner for wealth creation through global real estate.
     </p>
   </div>
 </section>
@@ -440,12 +444,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: "🌍", title: "Trusted by Indian investors across India" },
-              { icon: "🏗", title: "Partnerships with Dubai's top developers" },
-              { icon: "📊", title: "10–15% monthly ROI track record" },
-              { icon: "📞", title: "24/7 dedicated support" },
-              { icon: "🔒", title: "100% safe, legal, and verified projects" },
-              { icon: "🆔", title: "Transparent Dashboard – Check your ROI & profits in real time" }
+              { icon: "🌍", title: "Trusted by hundreds of Indian investors nationwide" },
+              { icon: "🏗", title: "Strong partnerships with top Dubai developers" },
+              { icon: "📊", title: "Proven track record of consistent ROI payouts" },
+              { icon: "📞", title: "24/7 Investor Support (Call, WhatsApp, Email)" },
+              { icon: "🔒", title: "100% legal compliance – Every project RERA & DLD approved" },
+              { icon: "🆔", title: "Transparent Dashboard – Live ROI tracking, anytime, anywhere" }
             ].map((item, index) => (
               <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 text-center" data-reveal style={{transitionDelay: `${80 * (index + 1)}ms`}}>
                 <div className="text-3xl mb-4">{item.icon}</div>
@@ -471,22 +475,22 @@ export default function Home() {
   {/* Content */}
   <div className="relative max-w-6xl mx-auto z-10">
     <div className="text-center mb-16" data-reveal style={{transitionDelay: '60ms'}}>
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Testimonials</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Testimonials (Real Stories from Investors)</h2>
     </div>
 
     <div className="grid md:grid-cols-3 gap-8">
       {[
         {
-          quote: "I invested ₹1,00,000 and started receiving ROI the very next month. Dunex is transparent and professional.",
-          author: "Rahul, Delhi"
+          quote: "I invested ₹1,00,000 and started receiving ROI from the next month. The dashboard and support team are very transparent. Highly recommended.",
+          author: "Rahul (Delhi)"
         },
         {
-          quote: "Monthly ROI of 12% is real and consistent. Dunex made Dubai investment easy for me.",
-          author: "Sara, Mumbai"
+          quote: "The monthly ROI of 12% is consistent, and I love how easy Dunex made Dubai real estate investment for Indians.",
+          author: "Sara (Mumbai)"
         },
         {
-          quote: "Secure, easy, and high profit. Dunex is a trusted platform.",
-          author: "Amit, Bangalore"
+          quote: "Secure, professional, and profitable. Dunex is my trusted partner for real estate investments abroad.",
+          author: "Amit (Bangalore)"
         }
       ].map((item, index) => (
         <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10" data-reveal style={{transitionDelay: `${80 * (index + 1)}ms`}}>
@@ -505,7 +509,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center" data-reveal style={{transitionDelay: '60ms'}}>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Start Today. Earn 10–15% ROI Every Month with Dunex.</h2>
           <p className="text-xl text-gray-300 mb-8">
-            Invest smart and start receiving monthly ROI from Dubai's fastest-growing properties.
+            Your money should be working for you. Begin investing in Dubai’s most profitable properties today and enjoy guaranteed monthly returns with long-term growth.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#D4AF37] text-[#071538] font-bold text-lg shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.3)] transition-all duration-300 hover:scale-110 w-full sm:w-auto">
@@ -520,7 +524,7 @@ export default function Home() {
 
       {/* 11. FAQ SECTION */}
     <section
-  className="relative py-20 px-6 rounded-3xl mt-12 overflow-hidden"
+  className="relative py-20 px-6  mt-12 overflow-hidden"
   style={{
     backgroundImage: "url('/faq.jpg')", // replace with your background image path
     backgroundSize: "cover",
@@ -560,6 +564,7 @@ export default function Home() {
     </div>
   </div>
 </section>
+     
     </div>
   );
 }

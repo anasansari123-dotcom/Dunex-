@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const handleCloseMenu = () => setIsOpen(false);
   return (
     <header className="bg-[var(--secondary)] backdrop-blur border-b border-gray-200 w-full top-0 z-50 text-[var(--primary)] animate-fade-in sticky">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,11 +76,11 @@ export default function Header() {
       {/* Mobile Menu */}
       <div id="mobile-menu" className={`${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"} md:hidden overflow-hidden transition-all duration-300 ease-out border-t border-gray-200/60`}>
         <div className="px-4 py-3 space-y-3 bg-[var(--secondary)]/95">
-          <Link href="/auth/login" className="block px-3 py-2 rounded-md hover:bg-white/10">Login</Link>
-          <Link href="/contact" className="block px-3 py-2 rounded-md hover:bg-white/10">Contact</Link>
-          <Link href="/blog" className="block px-3 py-2 rounded-md hover:bg-white/10">Blog</Link>
-          <Link href="/terms" className="block px-3 py-2 rounded-md hover:bg-white/10">Terms</Link>
-          <Link href="/dashboard" className="block text-center px-4 py-3 rounded-full bg-[var(--primary)] text-[var(--secondary)] font-semibold shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all">Invest Now</Link>
+          <Link href="/auth/login" onClick={handleCloseMenu} className="block px-3 py-2 rounded-md hover:bg-white/10">Login</Link>
+          <Link href="/contact" onClick={handleCloseMenu} className="block px-3 py-2 rounded-md hover:bg-white/10">Contact</Link>
+          <Link href="/blog" onClick={handleCloseMenu} className="block px-3 py-2 rounded-md hover:bg-white/10">Blog</Link>
+          <Link href="/terms" onClick={handleCloseMenu} className="block px-3 py-2 rounded-md hover:bg-white/10">Terms</Link>
+          <Link href="/dashboard" onClick={handleCloseMenu} className="block text-center px-4 py-3 rounded-full bg-[var(--primary)] text-[var(--secondary)] font-semibold shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] transition-all">Invest Now</Link>
         </div>
       </div>
     </header>

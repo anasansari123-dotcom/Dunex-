@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function DashboardPage() {
@@ -34,7 +35,7 @@ export default function DashboardPage() {
   const [showModal, setShowModal] = useState(false);
   const [currentProperty, setCurrentProperty] = useState(null);
 
-  const handleInvest = (id) => {
+  const handlePurchase = (id) => {
     setProperties((prev) =>
       prev.map((property) =>
         property.id === id
@@ -94,13 +95,23 @@ export default function DashboardPage() {
                 </p>
               </div>
 
-              <motion.button
-                whileTap={{ scale: 0.9 }}
-                onClick={() => handleInvest(property.id)}
-                className="mt-6 w-full bg-[#D4AF37] text-[#0B1D39] font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-yellow-500 transition"
-              >
-                Invest ₹50,000
-              </motion.button>
+              <div className="mt-6 flex gap-3">
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handlePurchase(property.id)}
+                  className="flex-1 bg-[#D4AF37] text-[#0B1D39] font-bold py-2 px-4 rounded-xl shadow-lg hover:bg-yellow-500 transition"
+                >
+                  Purchase ₹50,000
+                </motion.button>
+                <Link href={`/dashboard/${property.id}`} className="min-w-[140px]">
+                  <motion.span
+                    whileTap={{ scale: 0.95 }}
+                    className="block text-center bg-transparent border-2 border-[#D4AF37] text-[#D4AF37] font-bold py-2 px-4 rounded-xl hover:bg-[#D4AF37] hover:text-[#0B1D39] transition"
+                  >
+                    View Full
+                  </motion.span>
+                </Link>
+              </div>
             </div>
           </motion.div>
         ))}
@@ -114,7 +125,7 @@ export default function DashboardPage() {
           exit={{ opacity: 0 }}
           className="fixed bottom-10 right-10 bg-[#D4AF37] text-[#0B1D39] px-6 py-4 rounded-xl shadow-xl font-bold"
         >
-          ✅ Successfully invested in {currentProperty}
+          ✅ Successfully purchased in {currentProperty}
         </motion.div>
       )}
     </div>

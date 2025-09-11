@@ -9,7 +9,7 @@ export default function BlogPage() {
       title: "Dubai Real Estate Market Trends 2024: What Investors Need to Know",
       description:
         "Discover the latest trends shaping Dubai's real estate market in 2024. From luxury developments to investment opportunities, get insights from our market experts on what's driving growth and where the best opportunities lie.",
-      image: "/dubai-skyline.jpg", // Changed to a more realistic image name
+      image: "/first.jpg",
       category: "Market Analysis",
       readTime: "8 min read",
       author: "Sarah Ahmed",
@@ -20,7 +20,7 @@ export default function BlogPage() {
       title: "Luxury Living in Downtown Dubai: A Complete Guide",
       description:
         "Explore the pinnacle of urban luxury in Downtown Dubai. From iconic landmarks to world-class amenities, discover why this area remains the most sought-after location for high-end real estate investments.",
-      image: "/downtown-dubai.jpg",
+      image: "/second.jpg",
       category: "Location Guide",
       readTime: "6 min read",
       author: "Michael Chen",
@@ -31,7 +31,7 @@ export default function BlogPage() {
       title: "Investment Strategies for Dubai's Off-Plan Properties",
       description:
         "Learn how to navigate Dubai's off-plan property market with confidence. Our comprehensive guide covers everything from developer selection to payment plans and legal considerations for successful investments.",
-      image: "/off-plan-properties.jpg",
+      image: "/third.jpg",
       category: "Investment Guide",
       readTime: "10 min read",
       author: "Aisha Al-Rashid",
@@ -42,7 +42,7 @@ export default function BlogPage() {
       title: "The Future of Sustainable Living in Dubai",
       description:
         "Discover how Dubai is leading the way in sustainable real estate development. From green buildings to eco-friendly communities, explore the city's commitment to environmental responsibility.",
-      image: "/sustainable-dubai.jpg",
+      image: "/stock.png",
       category: "Sustainability",
       readTime: "7 min read",
       author: "David Thompson",
@@ -53,7 +53,7 @@ export default function BlogPage() {
       title: "Dubai Marina vs Palm Jumeirah: Which is Right for You?",
       description:
         "Compare two of Dubai's most iconic waterfront communities. We break down the pros and cons of each location to help you make an informed decision for your next property investment.",
-      image: "/marina-palm.jpg",
+      image: "/about.jpg",
       category: "Location Comparison",
       readTime: "9 min read",
       author: "Fatima Hassan",
@@ -64,7 +64,7 @@ export default function BlogPage() {
       title: "Understanding Dubai's New Visa Regulations for Property Investors",
       description:
         "Stay updated on the latest visa regulations affecting property investors in Dubai. Learn about the new Golden Visa program and how it can benefit your real estate investment strategy.",
-      image: "/dubai-visa.jpg",
+      image: "/invest.jpg",
       category: "Legal Updates",
       readTime: "5 min read",
       author: "Ahmed Al-Mansouri",
@@ -145,9 +145,10 @@ export default function BlogPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/second.jpg" // Changed to a more realistic image name
+            src="/second.jpg"
             alt="Dubai Real Estate"
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -156,23 +157,52 @@ export default function BlogPage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
-          <div className={`max-w-4xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h1 className="text-4xl md:text-6xl font-bold uppercase mb-4 tracking-wider text-[var(--primary)] animate-pulse-slow">
-              Insights & Trends
-            </h1>
-            <p className="text-xl md:text-2xl font-light animate-fade-in-delay">
-              Your Guide to Dubai&apos;s Real Estate
-            </p>
-            
-            {/* Animated scroll indicator */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-              <svg className="w-6 h-6 text-[#D4AF37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-              </svg>
-            </div>
-          </div>
-        </div>
+        <div className="relative h-screen overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src="/second.jpg" // replace with your image path
+      alt="Background"
+      className="w-full h-full object-cover"
+    />
+    {/* Optional overlay for dark effect */}
+    <div className="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  {/* Foreground Content */}
+  <div className="relative z-10 flex items-center justify-center h-full text-center text-white px-4">
+    <div
+      className={`max-w-4xl transition-all duration-1000 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
+      <h1 className="text-4xl md:text-6xl font-bold uppercase mb-4 tracking-wider text-[var(--primary)] animate-pulse-slow">
+        Insights & Trends
+      </h1>
+      <p className="text-xl md:text-2xl font-light animate-fade-in-delay">
+        Your Guide to Dubai&apos;s Real Estate
+      </p>
+
+      {/* Animated scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <svg
+          className="w-6 h-6 text-[#D4AF37]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
       </section>
 
       {/* Content Section */}
@@ -249,7 +279,7 @@ export default function BlogPage() {
             {blogPosts.map((post, index) => (
               <article
                 key={post.id}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-white/20 hover:shadow-xl transition-all duration-500 transform hover:scale-[1.03] hover:-translate-y-2 animate-fade-in-up"
+                className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-lg overflow-hidden border border-white/20 hover:shadow-xl transition-all duration-500 transform hover:scale-[1.03] hover:-translate-y-2 animate-fade-in-up flex flex-col h-full"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* Blog Image - Fixed with proper handling */}
@@ -258,6 +288,7 @@ export default function BlogPage() {
                     src={post.image}
                     alt={post.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover"
                   />
                   
@@ -280,7 +311,7 @@ export default function BlogPage() {
                 </div>
 
                 {/* Blog Content */}
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-white mb-3 leading-tight hover:text-[#D4AF37] transition-colors duration-300">
                     {post.title}
                   </h3>
@@ -304,15 +335,10 @@ export default function BlogPage() {
                     <span>{post.date}</span>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex items-center justify-between gap-3">
-                    <button className="flex-1 bg-gradient-to-r from-[#D4AF37] to-[#c79a2a] text-[#071538] py-3 px-4 rounded-lg font-bold hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                      Read More →
-                    </button>
-                    <button className="flex-1 bg-gradient-to-r from-[#FFD700] to-[#FBBF24] text-[#0A1F44] py-3 px-4 rounded-lg font-bold hover:scale-105 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                      Invest
-                    </button>
-                  </div>
+                  {/* Action Button aligned bottom */}
+                  <a href="/blog" className="mt-auto w-full block text-center bg-gradient-to-r from-[#D4AF37] to-[#c79a2a] text-[#071538] py-3 px-4 rounded-lg font-bold hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
+                    Read More →
+                  </a>
                 </div>
               </article>
             ))}
