@@ -1,31 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function ForgotPasswordPage() {
+  const router = useRouter();
+  const { forgotPassword, signInWithGoogle, loading, error, isAuthenticated, clearError } = useAuth();
+  
   const [email, setEmail] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState("");
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e) => {
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/dashboard');
+    }
+  }, [isAuthenticated, router]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError("");
+    clearError();
+
     if (!email.trim()) {
-      setError("Please enter your email address");
+      setSubmitError("Please enter your email address");
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setError("Please enter a valid email address");
+      setSubmitError("Please enter a valid email address");
       return;
     }
-    console.log("Password reset requested for:", email);
-    setIsSubmitted(true);
-    setError("");
+
+    const result = await forgotPassword(email);
+    
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      setSubmitError(result.error || "Failed to send reset email. Please try again.");
+    }
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+  const handleGoogleLogin = async () => {
+    setSubmitError("");
+    clearError();
+    
+    const result = await signInWithGoogle();
+    if (!result.success) {
+      setSubmitError(result.error || "Google login failed. Please try again.");
+    }
   };
 
   return (
@@ -86,20 +112,25 @@ export default function ForgotPasswordPage() {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className={`w-full px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent bg-[#13294B] text-white placeholder-gray-400 transition ${
-                      error ? "border-red-500" : "border-[#D4AF37]/40 border"
+                      submitError || error ? "border-red-500" : "border-[#D4AF37]/40 border"
                     }`}
                     placeholder="Enter your email address"
                   />
-                  {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
+                  {(submitError || error) && <p className="mt-1 text-sm text-red-400">{submitError || error}</p>}
                 </div>
 
                 {/* Submit Button */}
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   type="submit"
-                  className="w-full bg-[#D4AF37] text-[#0B1D39] py-3 px-4 rounded-lg font-semibold hover:bg-yellow-500 transition"
+                  disabled={loading}
+                  className={`w-full py-3 px-4 rounded-lg font-semibold transition ${
+                    loading
+                      ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                      : "bg-[#D4AF37] text-[#0B1D39] hover:bg-yellow-500"
+                  }`}
                 >
-                  Send Reset Link
+                  {loading ? "Sending..." : "Send Reset Link"}
                 </motion.button>
               </form>
 
@@ -116,7 +147,12 @@ export default function ForgotPasswordPage() {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={handleGoogleLogin}
-                className="w-full bg-white text-gray-800 py-3 px-4 rounded-lg font-medium hover:bg-gray-100 transition flex items-center justify-center gap-3 shadow-md"
+                disabled={loading}
+                className={`w-full py-3 px-4 rounded-lg font-medium transition flex items-center justify-center gap-3 shadow-md ${
+                  loading
+                    ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                    : "bg-white text-gray-800 hover:bg-gray-100"
+                }`}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
