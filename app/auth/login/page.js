@@ -1,14 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../../hooks/useAuth";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { login, signInWithGoogle, loading, error, isAuthenticated, clearError } = useAuth();
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     rememberMe: false
   });
+  const [submitError, setSubmitError] = useState("");
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push('/dashboard');
+    }
+  }, [isAuthenticated, router]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -16,15 +29,38 @@ export default function LoginPage() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    // Clear errors when user starts typing
+    if (submitError) setSubmitError("");
+    if (error) clearError();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login attempt:", formData);
+    setSubmitError("");
+    clearError();
+
+    if (!formData.email || !formData.password) {
+      setSubmitError("Please fill in all fields");
+      return;
+    }
+
+    const result = await login(formData.email, formData.password);
+    
+    if (result.success) {
+      router.push('/dashboard');
+    } else {
+      setSubmitError(result.error || "Login failed. Please try again.");
+    }
   };
 
-  const handleGoogleLogin = () => {
-    console.log("Google login clicked");
+  const handleGoogleLogin = async () => {
+    setSubmitError("");
+    clearError();
+    
+    const result = await signInWithGoogle();
+    if (!result.success) {
+      setSubmitError(result.error || "Google login failed. Please try again.");
+    }
   };
 
   return (
@@ -53,6 +89,13 @@ export default function LoginPage() {
 
         {/* Login Form */}
         <div className="bg-[#0d1b3f] rounded-2xl shadow-lg p-8 border border-[#d4af37]/40">
+          {/* Error Messages */}
+          {(error || submitError) && (
+            <div className="mb-4 p-3 bg-red-900/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
+              {error || submitError}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field */}
             <div>
@@ -123,9 +166,14 @@ export default function LoginPage() {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-[#d4af37] to-[#f5c542] text-[#071538] py-3 px-4 rounded-lg font-semibold hover:scale-105 transition"
+              disabled={loading}
+              className={`w-full py-3 px-4 rounded-lg font-semibold transition ${
+                loading
+                  ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-[#d4af37] to-[#f5c542] text-[#071538] hover:scale-105"
+              }`}
             >
-             <a href="/blog"> Sign In</a>
+              {loading ? "Signing In..." : "Sign In"}
             </button>
           </form>
 
@@ -146,7 +194,12 @@ export default function LoginPage() {
           {/* Google Login Button */}
           <button
             onClick={handleGoogleLogin}
-            className="w-full bg-transparent border border-gray-600 text-gray-200 py-3 px-4 rounded-lg font-medium hover:bg-[#d4af37]/10 transition flex items-center justify-center gap-3"
+            disabled={loading}
+            className={`w-full py-3 px-4 rounded-lg font-medium transition flex items-center justify-center gap-3 ${
+              loading
+                ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                : "bg-transparent border border-gray-600 text-gray-200 hover:bg-[#d4af37]/10"
+            }`}
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
