@@ -75,10 +75,7 @@ export default function PropertyDetail({ params }) {
                   <p>Configuration: 2-4 BHK options</p>
                   <p>Size Range: 1,100 – 2,800 sq.ft</p>
                 </div>
-                <div>
-                  <p>Payment Plan: Flexible, milestone-based</p>
-                  <p>Handover: 2026 (Q4)</p>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -115,5 +112,4 @@ export default function PropertyDetail({ params }) {
     </div>
   );
 }
-
 
