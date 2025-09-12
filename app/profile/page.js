@@ -95,7 +95,7 @@ export default function ProfilePage() {
         <div className="bg-white/5 border border-white/10 rounded-2xl p-6 mt-8">
           <h3 className="text-lg font-bold text-white mb-4">Recent Activity</h3>
           <div className="space-y-3 text-gray-300 text-sm">
-            <p>• Purchased ₹50,000 in Burj Khalifa Apartments</p>
+            <p>• Invest ₹50,000 in Burj Khalifa Apartments</p>
             <p>• UPI payment successful • Ref: UPI-2391</p>
             <p>• Profile updated</p>
           </div>

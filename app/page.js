@@ -143,6 +143,7 @@ export default function Home() {
             <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200/90 max-w-4xl mx-auto mb-6 sm:mb-8 px-2">
               Dunex gives Indian investors direct access to Dubai’s premium real estate opportunities — trusted, secure, and profitable. With as little as ₹1,00,000, you can start earning 10–15% ROI per month, credited directly to your bank account in INR.
             </p>
+            
             <p className="text-sm sm:text-base md:text-lg text-gray-200/90 max-w-3xl mx-auto mb-6 sm:mb-10 px-2">
               We eliminate the risks of middlemen by offering verified projects, legal compliance, instant dashboards, and real-time profit tracking.
             </p>
@@ -186,9 +187,58 @@ export default function Home() {
       {/* Featured verification note */}
       <div className="px-6">
         <p className="text-center text-gray-300 mt-2" data-reveal style={{transitionDelay: '80ms'}}>
-          💡 All opportunities are verified, RERA-registered, and backed by Dubai’s top developers.
+          💡 All opportunities are verified, RERA-registered, and backed by Dubai's top developers.
         </p>
       </div>
+
+      {/* 100+ Trusted Customers Section */}
+      <section className="py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12" data-reveal style={{transitionDelay: '60ms'}}>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">100+ Trusted Customers</h2>
+            <p className="text-lg text-gray-300">Join hundreds of satisfied investors who are already earning with Dunex</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-8">
+            {[
+              { name: "Rahul S.", location: "Delhi", investment: "₹2,50,000", roi: "12% monthly" },
+              { name: "Priya M.", location: "Mumbai", investment: "₹1,00,000", roi: "10% monthly" },
+              { name: "Amit K.", location: "Bangalore", investment: "₹5,00,000", roi: "15% monthly" },
+              { name: "Sara J.", location: "Chennai", investment: "₹3,00,000", roi: "13% monthly" },
+              { name: "Rajesh P.", location: "Pune", investment: "₹1,50,000", roi: "11% monthly" },
+              { name: "Anita R.", location: "Hyderabad", investment: "₹4,00,000", roi: "14% monthly" },
+              { name: "Vikram S.", location: "Kolkata", investment: "₹2,00,000", roi: "12% monthly" },
+              { name: "Deepa L.", location: "Ahmedabad", investment: "₹3,50,000", roi: "13% monthly" },
+              { name: "Kumar M.", location: "Jaipur", investment: "₹1,25,000", roi: "10% monthly" },
+              { name: "Sunita G.", location: "Chandigarh", investment: "₹2,75,000", roi: "12% monthly" },
+              { name: "Ravi T.", location: "Kochi", investment: "₹4,50,000", roi: "14% monthly" },
+              { name: "Meera N.", location: "Indore", investment: "₹1,75,000", roi: "11% monthly" }
+            ].map((customer, index) => (
+              <div key={index} className="card-base hover-lift hover-glow bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10 text-center" data-reveal style={{transitionDelay: `${60 * (index + 1)}ms`}}>
+                <div className="w-12 h-12 bg-[#D4AF37] rounded-full flex items-center justify-center text-[#071538] font-bold text-lg mx-auto mb-3">
+                  {customer.name.charAt(0)}
+                </div>
+                <h4 className="text-white font-semibold text-sm mb-1">{customer.name}</h4>
+                <p className="text-gray-400 text-xs mb-2">{customer.location}</p>
+                <div className="space-y-1">
+                  <p className="text-[#D4AF37] text-xs font-medium">Invested: {customer.investment}</p>
+                  <p className="text-green-400 text-xs font-medium">ROI: {customer.roi}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center" data-reveal style={{transitionDelay: '100ms'}}>
+            <div className="inline-flex items-center gap-4 bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+              <div className="text-4xl">👥</div>
+              <div className="text-left">
+                <h3 className="text-2xl font-bold text-white mb-2">100+ Active Investors</h3>
+                <p className="text-gray-300">And counting! Join our growing community of successful investors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 2. WHY DUBAI REAL ESTATE */}
       <section className="py-20 px-6">
@@ -403,6 +453,9 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <p className="text-center text-gray-300 mt-8" data-reveal style={{transitionDelay: '90ms'}}>
+            💡 Dubai offers 0% tax on personal income, capital gains, and inheritance, making it highly attractive.
+          </p>
       </section>
 
       {/* 7. ABOUT DUNEX */}
